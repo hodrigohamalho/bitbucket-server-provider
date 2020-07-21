@@ -151,6 +151,8 @@ public class BitbucketIdentityProvider extends AbstractOAuth2IdentityProvider im
 		try {
 			JsonNode profile = SimpleHttp.doGet(USER_URL, session).header("Authorization", "Bearer " + accessToken).asJson();
 
+			System.out.println("--------------------");
+			System.out.println(profile);
 			String type = getJsonProperty(profile, "type");
 			if (type == null) {
 				throw new IdentityBrokerException("Could not obtain account information from bitbucket.");
